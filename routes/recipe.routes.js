@@ -5,13 +5,10 @@ const recipeRoute = express.Router();
 //HERE THE ROUTES
 
 // Iteration 2 - Create a recipe
-recipeRoute.post('/create-recipe', async (req, res) => {
+recipeRoute.post("/create-recipe", async (req, res) => {
   try {
     const form = req.body;
-
-    //quer criar um documento dentro da sua collection -> .create()
     const newRecipe = await RecipeModel.create(form);
-
     return res.status(201).json(newRecipe);
   } catch (error) {
     console.log(error.errors);
