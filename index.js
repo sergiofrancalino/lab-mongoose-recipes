@@ -17,7 +17,7 @@ connect()
 
 app.use("/recipe", recipeRoute);
 
-// o servidor subindo pro ar.
+// The server will be UP 
 app.listen(process.env.PORT, () => {
   console.log(
     `App up and running on port http://localhost:${process.env.PORT}`
