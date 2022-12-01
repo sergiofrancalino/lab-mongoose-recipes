@@ -6,35 +6,27 @@ const recipeSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      minlength: 2,
-      maxlength: 18,
-      lowercase: true,
     },
     level: {
       type: String,
-      enum: ["Easy Peasy", "Amateur Chef", "UltraPro Chef"],
-      default: "Easy Peasy",
-      lowercase: true,
+      enum: ["Easy Peasy", "Amateur Chef", "UltraPro Chef"], 
     },
     ingredients: [{ type: String }],
     cuisine: {
       type: String,
-      required: true,
-      minlength: 2,
-      maxlength: 25,
+      required: true,      
     },
     dishType: {
       type: String,
       enum: [
         "breakfast",
-        "main course",
+        "main_course",
         "soup",
         "snack",
         "drink",
         "dessert",
         "other",
       ],
-      default: "breakfast",
     },
     image: {
       type: String,
@@ -42,16 +34,15 @@ const recipeSchema = new Schema(
     },
     duration: {
       type: Number,
-      min: 0,
-      max: 60,
+      min: 0,    
     },
     creator: {
       type: String,
-      minlength: 2,
-      maxlength: 20,
+      minlength: 2,    
     },
     created: {
       type: Date,
+      default: Date.now,
     },
   },
   {
