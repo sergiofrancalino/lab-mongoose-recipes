@@ -12,7 +12,7 @@ const app = express();
 //configurar o servidor para aceitar enviar e receber arquivos em JSON
 app.use(express.json());
 
-//conectando com o banco de dados
+//conectando com o banco de dados receitas no MongoDB vide .env
 connect()
 
 app.use("/recipe", recipeRoute);
