@@ -50,21 +50,25 @@ recipeRoute.put("/edit-duration/", async (req, res) => {
   }
 });
 
-//Iteration 5 - Remove a recipe
-recipeRoute.delete("/delete-title/", async (req, res) => {
+//Iteration 5 - Remove a recipe using findByIDAndDelete()
+recipeRoute.delete("/delete-title/:id", async (req, res) => {
   try {
     console.log(req.body);
+    const { id } = req.params;
 
-    //Using the Model.deleteOne method
-    const deleteRecipe = await RecipeModel.deleteOne(req.body);
+    // Using the Model.deleteOne method
+    // const deleteRecipe = await RecipeModel.deleteOne(req.body);
+
+    // Using the findByIDAndDelete
+    const deleteRecipe = await RecipeModel.findByIdAndDelete(id);
+
+    //Case the id don't found in collection
     if (!deleteRecipe) {
       return res.status(400).json({ msg: "Recipe not found" });
     }
 
-    //remove that recipe from the database and display a success
-    const recipe = await RecipeModel.find();
-    console.log("Recipe deleted");
-    return res.status(200).json(recipe);
+    return res.status(200).json(deleteRecipe);
+    
   } catch (error) {
     console.log(error);
     return res.status(500).json(error.errors);

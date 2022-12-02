@@ -19,18 +19,19 @@ const app = express();
 //4.1 - .use() is a middleware (A bridge between OS or database and a app)
 app.use(express.json());
 
-//1.3 - Invoke or connecting to database on port and URI specified in .env file
+//1.3 - Invoke connect function -> To connect to database on port and URI specified in .env file
 connect()
 
 //5. Create routes in the routes folder and import them with the middleware ".use()" again.
 app.use("/recipe", recipeRoute);
 
 // DO IT ALWAYS AT THE END OF THE "index.js" FILE
+
 //6. Server going up: .listen() - is also a middleware too - takes two parameters: 
 //a) Port (defined in .env file: "process.env." in .env file and "PORT" is the file key)
 //b) Callback console.log with the below massage sayng the IP, http port and database connected's name
 app.listen(process.env.PORT, () => {
   console.log(
-    `App server up and running on port http://localhost:${process.env.PORT}`
+    `App server up and running on url and port → http://localhost:${process.env.PORT}`
   );
 });
