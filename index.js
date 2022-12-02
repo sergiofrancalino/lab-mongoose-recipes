@@ -7,6 +7,7 @@ import * as dotenv from "dotenv";
 //1.2 - Import the connect and The routes
 import connect from "./config/db.config.js";
 import recipeRoute from './routes/recipe.routes.js';
+import userRoute from './routes/user.routes.js';
 
 //2.Enable the server to have environment variables
 dotenv.config();
@@ -24,6 +25,7 @@ connect()
 
 //5. Create routes in the routes folder and import them with the middleware ".use()" again.
 app.use("/recipe", recipeRoute);
+app.use('/user', userRoute);
 
 // DO IT ALWAYS AT THE END OF THE "index.js" FILE
 
